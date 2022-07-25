@@ -8,6 +8,10 @@
 
 - [Design in Figma](https://www.figma.com/file/IhGnLERbAKg16N4XH765Wp/RainbowParrot-messenger?node-id=0%3A1)
 
+### Link to project in Netlify
+
+- [Project in Netlify](https://unique-medovik-9f3030.netlify.app)
+
 ### To start project in development mode:
 
 - **`npm install`** - "устанавливает" необходимые зависимости.
