@@ -1,0 +1,32 @@
+{{#> main page=pages.profile}}
+<div class='chat-sidebar'>
+  <div class='chat-sidebar__top'>
+    <a href="./chats.hbs">
+      <button class='button button_style_onlytext'>
+        <img src='../images/icons/icon__toggle-nav.svg' alt='account-menu-button' class='account-menu__icon' />
+      </button>
+    </a>
+    <a href="./error404.hbs">
+      <button class='button button_style_onlytext'>
+        <img src='../images/icons/icon__search.svg' alt='account-menu-button' class='account-menu__icon' />
+      </button>
+    </a>
+  </div>
+  <div class="chat-profile">
+    <div class='chat-profile__avatar'>
+      <img class='chat-profile__avatar-img' src='../images/avatars/avatar5.png' alt='avatar1' />
+    </div>
+    <div class='chat-profile__details'>
+      <span class='chat-profile__name'>Kesha</span>
+      <span class='chat-profile__email'>kesha@mes.com</span>
+      <a href="./profile-edit.hbs" class='chat-profile__edit'>
+        <button class='button button_style_icon'>
+          <img src='../images/icons/icon__account.svg' alt='account-menu-button' class='account-menu__icon' />Профиль
+        </button>
+      </a>
+    </div>
+  </div>
+</div>
+
+{{> chat-content}}
+{{/main}}

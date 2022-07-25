@@ -1,0 +1,62 @@
+* {
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
+
+:focus {
+  outline: none;
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
+a {
+  text-decoration: none;
+}
+
+.container {
+  padding: 20px;
+  background-image: var(--bg-color-main);
+  height: 100%;
+  display: flex;
+  min-height: 900px;
+  align-items: normal;
+  justify-content: center;
+  &.login,
+  &.registration {
+    align-items: center;
+  }
+  &.profile-edit .chat-sidebar {
+    width: auto;
+  }
+}
+
+/* Scroll | Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--bg-color-second) var(--bg-color-fourth);
+}
+
+/* Scroll | Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  background: var(--bg-color-second);
+  border-radius: 10px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--bg-color-first);
+  border-radius: 10px;
+  border: 2px solid var(--bg-color-second);
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: var(--bg-color-fourth);
+}

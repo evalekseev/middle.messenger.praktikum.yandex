@@ -1,0 +1,18 @@
+:root {
+  --bg-color-main: linear-gradient(to right bottom, #8e50c0, #b84db4, #d74fa6, #ef5796, #ff6686);
+  --bg-color-first: #4d256d;
+  --bg-color-second: #642e8f;
+  --bg-color-third: #ff6686;
+  --bg-color-fourth: #ffb546;
+  --bg-color-fifth: #8e50c0;
+
+  --text-color-main: #ffffff;
+  --text-color-first: #ffe7ca;
+  --text-color-second: #aa82cb;
+
+  --border-color-main: #8e459a;
+
+  --border-radius: 20px;
+  --padding: 50px;
+  --padding-small: 25px;
+}
