@@ -1,0 +1,27 @@
+{{#> main page=pages.login}}
+<form action="" class="form">
+    <div class="form__top">
+        <img src="../images/icons/icon__account.svg" alt="account" class="form__input-wrap__icon">
+    </div>
+    <div class="form__content-row form__content-row_direction_column">
+        {{> input
+        name='login'
+        label='Логин'
+        type='text'
+        placeholder='...'
+        class='form__input-wrap'
+        }}
+        {{> input
+        name='password'
+        label='Пароль'
+        type='password'
+        placeholder='...'
+        class='form__input-wrap'
+        }}
+    </div>
+    <div class="form__bottom">
+        <a href="./chats.hbs" class="button form__button">Войти</a>
+        <a href="./registration.hbs" class="button button_style_onlytext">Регистрация</a>
+    </div>
+</form>
+{{/main}}

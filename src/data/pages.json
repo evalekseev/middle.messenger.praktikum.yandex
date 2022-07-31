@@ -1,0 +1,26 @@
+{
+  "login": {
+    "title": "Login",
+    "class": "login"
+  },
+  "chat": {
+    "title": "Chat",
+    "class": "messenger"
+  },
+  "registration": {
+    "title": "Registration",
+    "class": "registration"
+  },
+  "profile": {
+    "title": "Profile",
+    "class": "profile"
+  },
+  "profile-edit": {
+    "title": "Profile-edit",
+    "class": "profile-edit"
+  },
+  "error404": {
+    "title": "Error 404",
+    "class": "error404"
+  }
+}

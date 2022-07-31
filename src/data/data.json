@@ -1,0 +1,155 @@
+{
+    "chats": [
+
+        {
+            "name": "Parrot Lumamam",
+            "lastMessage": "Mollit mollit dolore enim magna id veniam veniam elit.",
+            "data": "07:30",
+            "newMassages": 0
+        },
+        {
+            "name": "Mr. Parrotosi",
+            "lastMessage": "Occaecat nostrud anim est tempor esse proident ullamco ex enim quis.",
+            "data": "09:22",
+            "newMassages": 2
+        },
+        {
+            "name": "Parrotellow",
+            "lastMessage": "Pariatur ea consequat ea tempor aliquip et cillum ullamco excepteur dolor nostrud sunt duis et.",
+            "data": "17:01",
+            "newMassages": 0
+        },
+        {
+            "name": "Parrot BlackHEad",
+            "lastMessage": "Consectetur laboris in amet veniam fugiat in nostrud.",
+            "data": "15:13",
+            "newMassages": 7
+        },
+        {
+            "name": "Mo. Parrot",
+            "lastMessage": "Ullamco exercitation ea dolor Lorem sunt deserunt consequat.",
+            "data": "09:40",
+            "newMassages": 0
+        },
+        {
+            "name": "Parrot PurpleRain",
+            "lastMessage": "Ea commodo tempor non sint ipsum magna non.",
+            "data": "07:10",
+            "newMassages": 0
+        },
+        {
+            "name": "Parrot Green",
+            "lastMessage": "Tempor esse tempor aute sit.",
+            "data": "07:30",
+            "newMassages": 1
+        },
+        {
+            "name": "Se Parrot P.",
+            "lastMessage": "Eiusmod dolor ipsum amet qui ut.",
+            "data": "17:11",
+            "newMassages": 0
+        },
+        {
+            "name": "Parrotoss",
+            "lastMessage": "Officia id amet nulla eiusmod minim do magna exercitation.",
+            "data": "09:30",
+            "newMassages": 0
+        },
+        {
+            "name": "Parrot 5tr",
+            "lastMessage": "Occaecat amet commodo et do velit.",
+            "data": "14:15",
+            "newMassages": 0
+        },
+        {
+            "name": "Mis. Parrotosi",
+            "lastMessage": "Enim proident dolore anim adipisicing sint duis aliquip adipisicing tempor.",
+            "data": "17:01",
+            "newMassages": 0
+        },
+        {
+            "name": "L5Parrot",
+            "lastMessage": "Ea adipisicing ipsum labore pariatur nisi est nisi elit exercitation minim duis.",
+            "data": "17:45",
+            "newMassages": 0
+        },
+        {
+            "name": "Parrot",
+            "lastMessage": "Minim sint eiusmod eu minim Lorem proident excepteur quis cillum cillum sint sit.",
+            "data": "12:01",
+            "newMassages": 0
+        },
+        {
+            "name": "uiParrotos",
+            "lastMessage": "Eiusmod proident adipisicing ad ipsum.",
+            "data": "11:11",
+            "newMassages": 0
+        },
+        {
+            "name": "Zerg Parrot",
+            "lastMessage": "Pariatur sunt id in cillum voluptate sunt elit.",
+            "data": "12:06",
+            "newMassages": 0
+        },
+        {
+            "name": "Protos Parrot",
+            "lastMessage": "Ipsum consequat commodo proident ut et do.",
+            "data": "00:01",
+            "newMassages": 0
+        }
+   
+    ],
+    "messages": [
+        {
+            "text": "Fugiat sint incididunt",
+            "data": "07:30",
+            "type": 0,
+            "avatar": "../images/avatars/avatar4.png"
+        },
+ 
+        {
+            "text": "Voluptate enim nisi duis ex minim dolor laboris labore incididunt esse sit voluptate.",
+            "data": "07:45",
+            "type": 1,
+            "avatar": "../images/avatars/avatar5.png"
+        },
+ 
+        {
+            "text": "Proident eu id fugiat quis Lorem adipisicing id sit commodo commodo. Est et dolore reprehenderit pariatur enim est do eu adipisicing elit mollit enim excepteur irure. Commodo minim esse do culpa velit. Tempor non laborum eiusmod sit.",
+            "data": "07:66",
+            "type": 0,
+            "avatar": "../images/avatars/avatar4.png"
+        },
+        {
+            "text": "Consectetur magna officia nostrud.",
+            "data": "17:20",
+            "type": 1,
+            "avatar": "../images/avatars/avatar5.png"
+        },
+        {
+            "text": "Dolor ex reprehenderit!",
+            "data": "08:13",
+            "type": 0,
+            "avatar": "../images/avatars/avatar4.png"
+        },
+        {
+            "text": "Lorem et quis duis nulla labore qui et et ))",
+            "data": "14:44",
+            "type": 0,
+            "avatar": "../images/avatars/avatar4.png"
+        },
+        {
+            "text": "Elit elit excepteur consequat aliquip ut ut aute laborum.",
+            "data": "16:87",
+            "type": 1,
+            "avatar": "../images/avatars/avatar5.png"
+        },
+        {
+            "text": "Fugiat deserunt laborum aute tempor.",
+            "data": "19:65",
+            "type": 0,
+            "avatar": "../images/avatars/avatar4.png"
+        }
+ 
+    ]
+}

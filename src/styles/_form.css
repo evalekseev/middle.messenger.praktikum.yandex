@@ -1,0 +1,50 @@
+.form {
+  background-color: var(--bg-color-first);
+  padding: var(--padding);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  &__top {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 50px;
+  }
+
+  &__bottom {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 50px;
+  }
+
+  &__content-row {
+    display: flex;
+  }
+  &__content-col {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__content-row_direction_column {
+    flex-direction: column;
+  }
+
+  &__content-col_margin_right {
+    margin-right: 30px;
+  }
+
+  &__content-col_margin_left {
+    margin-left: 30px;
+  }
+
+  &__input-wrap {
+    margin-bottom: 30px;
+  }
+
+  &__button {
+    margin-bottom: 25px;
+  }
+}
