@@ -5,6 +5,8 @@
   display: flex;
   flex-direction: column;
   position: relative;
+  border: 5px solid var(--bg-color-fifth);
+
   &__top {
     display: flex;
     align-items: center;
@@ -15,14 +17,15 @@
   &__bottom {
     display: flex;
     align-items: center;
-    justify-content: center;
     flex-direction: column;
-    margin-top: 50px;
+    flex-grow: 1;
+    justify-content: flex-end;
   }
 
   &__content-row {
     display: flex;
   }
+
   &__content-col {
     display: flex;
     flex-direction: column;

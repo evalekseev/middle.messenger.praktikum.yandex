@@ -1,0 +1,24 @@
+.error {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  &__title {
+    color: var(--bg-color-first);
+    font-size: 6rem;
+    font-weight: 500;
+  }
+
+  &__desc {
+    color: var(--text-color-first);
+    font-size: 1.2rem;
+    font-weight: 400;
+    margin-bottom: 50px;
+  }
+
+  &__details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}

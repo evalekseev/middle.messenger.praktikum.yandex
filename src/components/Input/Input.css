@@ -1,0 +1,81 @@
+.input-wrap {
+  width: 280px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  margin-bottom: 30px;
+}
+
+.label {
+  color: var(--text-color-second);
+  font-size: 0.875rem;
+  font-weight: 400;
+  padding-left: 15px;
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.02em;
+
+  &::before {
+    content: '';
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    position: absolute;
+    left: 0;
+    background: var(--bg-color-third);
+  }
+}
+
+.validation {
+  padding: 0 10px;
+  width: 100%;
+  min-height: 3px;
+  background-color: var(--bg-color-fourth);
+  opacity: 0;
+  position: absolute;
+  bottom: -3px;
+  display: flex;
+  z-index: 1000;
+  border-radius: 2px;
+  transition: background-color 0.5s, opacity 0.5s;
+  transform: translateY(100%);
+}
+
+.input {
+  color: var(--text-color-first);
+  font-size: 1em;
+  border: 0;
+  border-bottom: 1.5px dashed var(--bg-color-second);
+  width: 100%;
+  height: 40px;
+  background-color: transparent;
+  caret-color: var(--text-color-first);
+
+  &:focus + .validation {
+    opacity: 1;
+  }
+
+  &::placeholder {
+    color: var(--text-color-second);
+    font-weight: 300;
+    font-size: 0.9em;
+  }
+
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus,
+  &:-webkit-autofill:active {
+    -webkit-transition: 'color 9999s ease-out, background-color 9999s ease-out';
+    -webkit-transition-delay: 9999s;
+  }
+
+  &.invalid + .validation {
+    opacity: 1;
+    background-color: var(--bg-color-error);
+  }
+
+  &.valid + .validation {
+    opacity: 1;
+    background-color: green;
+  }
+}

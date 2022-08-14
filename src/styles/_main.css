@@ -1,6 +1,8 @@
 * {
   box-sizing: border-box;
   font-family: 'Roboto', sans-serif;
+  scrollbar-width: thin;
+  scrollbar-color: var(--bg-color-second) var(--bg-color-fourth);
 }
 
 :focus {
@@ -24,22 +26,20 @@ a {
   height: 100%;
   display: flex;
   min-height: 900px;
-  align-items: normal;
+  align-items: center;
   justify-content: center;
+
   &.login,
   &.registration {
     align-items: center;
   }
+
   &.profile-edit .chat-sidebar {
     width: auto;
   }
 }
 
 /* Scroll | Firefox */
-* {
-  scrollbar-width: thin;
-  scrollbar-color: var(--bg-color-second) var(--bg-color-fourth);
-}
 
 /* Scroll | Chrome, Edge, and Safari */
 *::-webkit-scrollbar {

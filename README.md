@@ -1,6 +1,6 @@
 # RainbowParrot messenger
 
-> Version App 0.1.1
+> Version App 0.2.1
 
 Проект - полноценное **SPA "Веб-мессенджер"** , реализованное только на JavaScript, TypeScript.
 
