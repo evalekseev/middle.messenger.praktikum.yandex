@@ -74,9 +74,7 @@ export default class Component {
     this.componentDidMount()
   }
 
-  componentDidMount() {
-    console.log('componentDidMount')
-  }
+  componentDidMount() {}
 
   dispatchComponentDidMoun(dispatchDetails: unknown) {
     console.log(dispatchDetails)
