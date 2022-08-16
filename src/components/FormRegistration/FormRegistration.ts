@@ -18,8 +18,11 @@ export default class FormRegistration extends Component {
       const form = this.element as HTMLFormElement
       const [...formElements] = form.elements
       const dataForm: Record<string, unknown> = {}
-      formElements.forEach((el: HTMLInputElement) => {
-        dataForm[el.name] = el.value
+      formElements.forEach((el: HTMLElement) => {
+        if (el.closest('input')) {
+          const input = el as HTMLInputElement
+          dataForm[input.name] = input.value
+        }
       })
       const dispatchDetails = dataForm
       this.dispatchComponentDidMoun(dispatchDetails)
@@ -27,7 +30,7 @@ export default class FormRegistration extends Component {
     }
   }
 
-  override dispatchComponentDidMoun(dispatchDetails: unknown) {
+  override dispatchComponentDidMoun(dispatchDetails: any) {
     const event = new CustomEvent('form-chacked-success', {
       bubbles: true,
       detail: {

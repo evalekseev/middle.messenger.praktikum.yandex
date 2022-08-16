@@ -76,7 +76,7 @@ export default class Component {
     this.dispatchComponentDidMoun()
   }
 
-  dispatchComponentDidMoun() {}
+  dispatchComponentDidMoun(dispatchDetails = {}): void {}
 
   protected _componentDidUpdate(oldProps: TProps, newProps: TProps) {
     console.log('--_componentDidUpdate', oldProps, newProps)

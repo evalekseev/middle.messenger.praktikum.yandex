@@ -17,8 +17,11 @@ export default class FormLogin extends Component {
       const form = this.element as HTMLFormElement
       const [...formElements] = form.elements
       const dataForm: Record<string, unknown> = {}
-      formElements.forEach((el: HTMLInputElement) => {
-        dataForm[el.name] = el.value
+      formElements.forEach((el: HTMLElement) => {
+        if (el.closest('input')) {
+          const input = el as HTMLInputElement
+          dataForm[input.name] = input.value
+        }
       })
       const dispatchDetails = dataForm
       this.dispatchComponentDidMoun(dispatchDetails)
@@ -31,6 +34,17 @@ export default class FormLogin extends Component {
       login: 'Login',
       password: 'Password',
     })
+  }
+
+  override dispatchComponentDidMoun(dispatchDetails: any) {
+    const event = new CustomEvent('form-chacked-success', {
+      bubbles: true,
+      detail: {
+        type: 'success',
+        res: dispatchDetails,
+      },
+    })
+    this.element.dispatchEvent(event)
   }
 
   override render(): DocumentFragment {
