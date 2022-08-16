@@ -11,7 +11,8 @@
     "target": "es2017",
     "strictPropertyInitialization": false,
     "module": "es2015",
-    "moduleResolution": "node"   
+    "moduleResolution": "node",
+    "resolveJsonModule": true
   },
   "include": ["./src/**/*"],
   "exclude": ["node_modules", "**/*.spec.ts", "dist/**/*", "server"]

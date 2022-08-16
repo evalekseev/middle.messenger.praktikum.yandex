@@ -3,6 +3,7 @@ import './FormRegistration.css'
 import Template from './FormRegistration.hbs'
 import Input from '../Input'
 import Button from '../Button'
+import Link from '../Link'
 import iconAccount from '../../images/icons/icon__account.svg'
 import Validation from '../../utils/Validation'
 
@@ -22,7 +23,7 @@ export default class FormRegistration extends Component {
       })
       const dispatchDetails = dataForm
       this.dispatchComponentDidMoun(dispatchDetails)
-      target.href = '/chats'
+      window.document.location = '/chats'
     }
   }
 
@@ -39,8 +40,8 @@ export default class FormRegistration extends Component {
 
   override componentDidMount(): void {
     this.validation = new Validation(this.element as HTMLFormElement, {
-      first_name: 'Name',
-      second_name: 'Name',
+      first_name: 'FirstName',
+      second_name: 'SecondName',
       login: 'Login',
       email: 'Email',
       password: 'Password',
@@ -82,17 +83,16 @@ export default class FormRegistration extends Component {
         name: 'phone',
         type: 'text',
       }),
-      ButtonEnter: new Button({
-        link: '',
+      ButtonRegistration: new Button({
         title: 'Зарегистрироваться',
-        class: 'button form__button submit',
+        class: 'button form__button button_style_submit',
         events: {
           click: {
             handle: this.handleFormSubmit.bind(this),
           },
         },
       }),
-      ButtonRegistration: new Button({
+      LinkEnter: new Link({
         link: '/',
         title: 'Войти',
         class: 'button button_style_onlytext',

@@ -1,18 +1,16 @@
 import { v4 as makeUUID } from 'uuid'
 import EventBus from './EventBus'
 
-enum Events {
-  INIT = 'init',
-  FLOW_CDM = 'flow:component-did-mount',
-  FLOW_CDU = 'flow:component-did-update',
-  FLOW_RENDER = 'flow:render',
-}
-
 type TProps = Record<string, any>
 type TChildren = Record<string, Component>
 
 export default class Component {
-  static EVENTS = Events
+  static EVENTS = {
+    INIT: 'init',
+    FLOW_CDM: 'flow:component-did-mount',
+    FLOW_CDU: 'flow:component-did-update',
+    FLOW_RENDER: 'flow:render',
+  }
 
   _element: any
   _children: TChildren | null
@@ -35,14 +33,14 @@ export default class Component {
     this.eventBus = new EventBus()
     this._registerEvents(this.eventBus)
 
-    this.eventBus.emit(Events.INIT)
+    this.eventBus.emit(Component.EVENTS.INIT)
   }
 
   protected _registerEvents(eventBus: any) {
-    eventBus.on(Events.INIT, this.init.bind(this))
-    eventBus.on(Events.FLOW_CDM, this._componentDidMount.bind(this))
-    eventBus.on(Events.FLOW_CDU, this._componentDidUpdate.bind(this))
-    eventBus.on(Events.FLOW_RENDER, this._render.bind(this))
+    eventBus.on(Component.EVENTS.INIT, this.init.bind(this))
+    eventBus.on(Component.EVENTS.FLOW_CDM, this._componentDidMount.bind(this))
+    eventBus.on(Component.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this))
+    eventBus.on(Component.EVENTS.FLOW_RENDER, this._render.bind(this))
   }
 
   protected _getChildren(): void {
@@ -58,7 +56,7 @@ export default class Component {
   }
 
   init(): void {
-    this.eventBus.emit(Events.FLOW_RENDER)
+    this.eventBus.emit(Component.EVENTS.FLOW_RENDER)
   }
 
   protected _createResources(): void {
@@ -74,22 +72,24 @@ export default class Component {
     this.componentDidMount()
   }
 
-  componentDidMount() {}
-
-  dispatchComponentDidMoun(dispatchDetails: unknown) {
-    console.log(dispatchDetails)
-    this.eventBus.emit(Component.EVENTS.FLOW_CDM)
+  componentDidMount() {
+    this.dispatchComponentDidMoun()
   }
+
+  dispatchComponentDidMoun() {}
 
   protected _componentDidUpdate(oldProps: TProps, newProps: TProps) {
     console.log('--_componentDidUpdate', oldProps, newProps)
-    const response = this.componentDidUpdate(oldProps, newProps)
+    const response = this.shouldComponentUpdate(oldProps, newProps)
     if (response) {
       this.eventBus.emit(Component.EVENTS.FLOW_RENDER)
     }
+    this.componentDidUpdate()
   }
 
-  componentDidUpdate(oldProps: TProps, newProps: TProps) {
+  componentDidUpdate() {}
+
+  shouldComponentUpdate(oldProps: TProps, newProps: TProps) {
     if (JSON.stringify(oldProps) === JSON.stringify(newProps)) {
       return false
     }
@@ -103,7 +103,7 @@ export default class Component {
 
     const oldProps = { ...this.props }
     this.props = Object.assign(this.props, nextProps)
-    this.eventBus.emit(Events.FLOW_CDU, oldProps, this.props)
+    this.eventBus.emit(Component.EVENTS.FLOW_CDU, oldProps, this.props)
   }
 
   get element() {
@@ -125,7 +125,7 @@ export default class Component {
       }
       this._initEventListeners()
     }
-    this.eventBus.emit(Events.FLOW_CDM)
+    this.eventBus.emit(Component.EVENTS.FLOW_CDM)
   }
 
   render(): DocumentFragment {
@@ -200,7 +200,7 @@ export default class Component {
   }
 
   show() {
-    this._element.style.display = 'block'
+    this._element.style.display = null
   }
 
   hide() {

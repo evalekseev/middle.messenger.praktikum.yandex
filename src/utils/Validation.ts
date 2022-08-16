@@ -1,24 +1,47 @@
-type TAlias = Record<string, RegExp>
+import Patterns from './Patterns'
 
 export default class Validation {
-  _patterns = {
-    LOGIN_PATTERN: /^(?=.*\d?)(?=.*[-_A-Za-z]).{3,20}$/,
-    // eslint-disable-next-line no-useless-escape
-    EMAIL_PATTERN: /^[-_\.a-z0-9]+@([-_a-z0-9]+\.)+[a-z]+$/,
-    NAME_PATTERN: /(^[A-Z][-a-z]{1,20}$)|(^[А-ЯЁ][-а-яё]{1,20}$)/,
-    PHONE_PATTERN: /^\+?[\d]{10,15}$/,
-    MESSAGE_PATTERN: /^.+$/,
-    // eslint-disable-next-line no-useless-escape
-    PASSWORD_PATTERN: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[-!@#&()[{}\]:;',?\/*~$^+=<>]).{8,20}$/,
+  _patterns = Patterns
+
+  _messages = {
+    LOGIN_ERROR_MESSAGE: 'Неверный логин',
+    EMAIL_ERROR_MESSAGE: 'Неверный email',
+    FIRST_NAME_ERROR_MESSAGE: 'Неверное имя',
+    SECOND_NAME_ERROR_MESSAGE: 'Неверная фамилия',
+    PHONE_ERROR_MESSAGE: 'Неверный телефон',
+    MESSAGE_ERROR_MESSAGE: null,
+    PASSWORD_ERROR_MESSAGE: 'Неверный пароль',
   }
 
-  _alias: TAlias = {
-    Login: this._patterns.LOGIN_PATTERN,
-    Email: this._patterns.EMAIL_PATTERN,
-    Name: this._patterns.NAME_PATTERN,
-    Phone: this._patterns.PHONE_PATTERN,
-    Message: this._patterns.MESSAGE_PATTERN,
-    Password: this._patterns.PASSWORD_PATTERN,
+  _alias: any = {
+    Login: {
+      pattern: this._patterns.LOGIN_PATTERN,
+      message: this._messages.LOGIN_ERROR_MESSAGE,
+    },
+    Email: {
+      pattern: this._patterns.EMAIL_PATTERN,
+      message: this._messages.EMAIL_ERROR_MESSAGE,
+    },
+    FirstName: {
+      pattern: this._patterns.FIRST_NAME_PATTERN,
+      message: this._messages.FIRST_NAME_ERROR_MESSAGE,
+    },
+    SecondName: {
+      pattern: this._patterns.SECOND_NAME_PATTERN,
+      message: this._messages.SECOND_NAME_ERROR_MESSAGE,
+    },
+    Phone: {
+      pattern: this._patterns.PHONE_PATTERN,
+      message: this._messages.PHONE_ERROR_MESSAGE,
+    },
+    Message: {
+      pattern: this._patterns.MESSAGE_PATTERN,
+      message: this._messages.MESSAGE_ERROR_MESSAGE,
+    },
+    Password: {
+      pattern: this._patterns.PASSWORD_PATTERN,
+      message: this._messages.PASSWORD_ERROR_MESSAGE,
+    },
   }
 
   _form: HTMLFormElement
@@ -40,8 +63,17 @@ export default class Validation {
     const res = formElements.map((field: HTMLInputElement) => {
       const fieldName = field.name
       const isValidated = fields[fieldName] ? true : false
-      const pattern = isValidated ? this._alias[fields[fieldName]] : /.*/
-      return { [fieldName]: { field: field, pattern: pattern, isValidated: isValidated } }
+      const alias = this._alias[fields[fieldName]]
+      const pattern = isValidated ? alias.pattern : /.*/
+      const message = isValidated ? alias.message : ''
+      return {
+        [fieldName]: {
+          field: field,
+          pattern: pattern,
+          message: message,
+          isValidated: isValidated,
+        },
+      }
     })
     return Object.assign({}, ...res)
   }
@@ -51,10 +83,16 @@ export default class Validation {
     const element = this._elements[fieldName]
     const value = element.field.value
     const pattern = element.pattern
+    const message = element.message
     const res = pattern.test(value)
+    const messageContainer = element.field.nextElementSibling as HTMLElement
+    const errorMessage = messageContainer.firstElementChild
+
     if (!res) {
       element.field.classList.add('invalid')
-      // element.field.focus()
+      if (!errorMessage) {
+        messageContainer.append(this._showMessage(message))
+      }
     } else {
       element.field.classList.remove('invalid')
     }
@@ -79,12 +117,19 @@ export default class Validation {
   protected _handleInputBlur = (e: Event) => {
     const target = e.target as HTMLInputElement
     const input = target.closest('input')
-    if (input) {
+    if (input && input.value.length > 0) {
       this.check(input)
       if (!target.value) {
         input.classList.remove('invalid')
       }
     }
+  }
+
+  _showMessage(message: string): HTMLElement {
+    const messageElement = document.createElement('span')
+    messageElement.classList.add('error_message')
+    messageElement.textContent = message
+    return messageElement
   }
 
   protected _removeEvents() {

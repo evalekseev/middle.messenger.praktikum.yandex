@@ -94,5 +94,6 @@
 
   &__input {
     padding: 0 var(--padding-small);
+    border: 0;
   }
 }

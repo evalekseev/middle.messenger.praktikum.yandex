@@ -1,7 +1,5 @@
 import Component from '../../utils/Component'
-
 import Template from './LoginPage.hbs'
-
 import LoginForm from '../../components/FormLogin'
 
 export default class LoginPage extends Component {

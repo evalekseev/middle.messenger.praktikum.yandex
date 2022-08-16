@@ -3,6 +3,7 @@ import './FormLogin.css'
 import Template from './FormLogin.hbs'
 import Input from '../Input'
 import Button from '../Button'
+import Link from '../Link'
 import iconAccount from '../../images/icons/icon__account.svg'
 import Validation from '../../utils/Validation'
 
@@ -21,7 +22,7 @@ export default class FormLogin extends Component {
       })
       const dispatchDetails = dataForm
       this.dispatchComponentDidMoun(dispatchDetails)
-      target.href = '/chats'
+      window.document.location = '/chats'
     }
   }
 
@@ -46,19 +47,18 @@ export default class FormLogin extends Component {
       }),
       iconAccount: iconAccount,
       ButtonEnter: new Button({
-        link: '#',
         title: 'Войти',
-        class: 'button form__button submit',
+        class: 'button form__button button_style_submit',
         events: {
           click: {
             handle: this.handleFormSubmit.bind(this),
           },
         },
       }),
-      ButtonRegistration: new Button({
+      ButtonRegistration: new Link({
         link: '/registration',
         title: 'Регистрация',
-        class: 'button button_style_onlytext',
+        class: 'link link_style_onlytext',
       }),
     })
   }

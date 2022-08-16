@@ -9,6 +9,7 @@ type Options = {
   method: METHOD
   tries?: number
   data?: any
+  query?: Record<string, any>
 }
 
 type OptionsWithoutMethod = Omit<Options, 'method'>
@@ -16,7 +17,8 @@ type OptionsWithoutTries = Omit<Options, 'tries'>
 
 export default class HTTPTransport {
   get(url: string, options: OptionsWithoutMethod = {}): Promise<XMLHttpRequest> {
-    return this._requestWithRetry(url, { ...options, method: METHOD.GET })
+    const URL = options.query ? this._queryStringUrl(url, options.query) : url
+    return this._requestWithRetry(URL, { ...options, method: METHOD.GET })
   }
   post(url: string, options: OptionsWithoutMethod = {}): Promise<XMLHttpRequest> {
     return this._requestWithRetry(url, { ...options, method: METHOD.POST })
@@ -26,6 +28,14 @@ export default class HTTPTransport {
   }
   delete(url: string, options: OptionsWithoutMethod = {}): Promise<XMLHttpRequest> {
     return this._requestWithRetry(url, { ...options, method: METHOD.DELETE })
+  }
+
+  protected _queryStringUrl(url: string, queryObj: Record<string, any>): string {
+    const urlWithQuery = new URL(url)
+    Object.entries(queryObj).forEach(([name, value]) => {
+      urlWithQuery.searchParams.set(name, value)
+    })
+    return urlWithQuery.toString()
   }
 
   protected async _requestWithRetry(

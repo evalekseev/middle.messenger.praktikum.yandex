@@ -6,11 +6,9 @@ import ChatsList from '../../components/ChatsList'
 import Profile from '../../components/Profile'
 import iconToggleNav from '../../images/icons/icon__toggle-nav.svg'
 import iconSearch from '../../images/icons/icon__search.svg'
+import { chats, messages } from '../../data/data.json'
 
 const profile = new Profile()
-
-// @ts-ignore
-import { chats, messages } from '../../data/data.json'
 
 export default class ChatPage extends Component {
   override initEventListeners() {

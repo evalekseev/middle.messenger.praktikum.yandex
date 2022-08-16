@@ -1,4 +1,4 @@
-.button {
+.link {
   width: 100%;
   max-width: 280px;
   height: 40px;
@@ -64,7 +64,7 @@
     filter: blur(10px);
   }
 
-  &.button_style_onlytext {
+  &.link_style_onlytext {
     font-size: 0.875rem;
     width: auto;
     height: auto;
@@ -73,19 +73,19 @@
     padding: 0;
   }
 
-  &.button_style_submit {
+  &.link_style_submit {
     background: var(--bg-color-fifth);
   }
 
-  &.button_style_icon {
+  &.link_style_icon {
     background: var(--bg-color-fifth);
   }
 
-  &.button_style_bg {
+  &.link_style_bg {
     background-color: var(--bg-color-first);
   }
 
-  &.button_style_icon img {
+  &.link_style_icon img {
     height: 20px;
     margin-right: 15px;
   }

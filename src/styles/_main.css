@@ -3,6 +3,7 @@
   font-family: 'Roboto', sans-serif;
   scrollbar-width: thin;
   scrollbar-color: var(--bg-color-second) var(--bg-color-fourth);
+  letter-spacing: 0.02em;
 }
 
 :focus {
