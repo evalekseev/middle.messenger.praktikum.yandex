@@ -9,7 +9,6 @@ const SignUpController = {
     const JSONPreparedData = JSON.stringify(data) as unknown as JSON
     try {
       await signUpAPI.create(JSONPreparedData)
-      localStorage.setItem('auth', 'ok')
       new Router().go('/messenger')
     } catch (error) {
       console.error(error)

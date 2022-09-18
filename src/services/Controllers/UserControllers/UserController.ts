@@ -41,7 +41,6 @@ const UserController = {
   async Logout() {
     try {
       await logoutAPI.request()
-      localStorage.removeItem('auth')
       new Router().go('/')
     } catch (error) {
       throw new Error(error)

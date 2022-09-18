@@ -9,16 +9,9 @@ const SignInController = {
     try {
       const JSONPreparedData = JSON.stringify(data) as unknown as JSON
       await SignIn.create(JSONPreparedData)
-      localStorage.setItem('auth', 'ok')
       new Router().go('/messenger')
     } catch (error) {
-      const reason = error.message as string
-
-      if (reason.includes('User already in system')) {
-        localStorage.setItem('auth', 'ok')
-        new Router().go('/messenger')
-        return
-      }
+      console.error(error)
     }
   },
 }

@@ -1,7 +1,5 @@
 import Route from './Route'
 
-import Store from '../Store'
-
 import UserController from '../Controllers/UserControllers/UserController'
 import ChatsController from '../Controllers/ChatsControllers/ChatsController'
 import PathnameController from '../Controllers/PathnameController'
@@ -44,30 +42,27 @@ export default class Router {
   }
 
   async authRoute(pathname = window.location.pathname) {
-    if (localStorage.auth) {
-      const { user } = Store.getState()
-
-      if (!user) {
-        try {
-          await Promise.all([UserController.Get(), ChatsController.Get()])
-        } catch (error) {
-          console.error(error.message)
-        }
-      }
+    try {
+      await UserController.Get()
+      await ChatsController.Get()
 
       if (pathname === '/' || pathname === '/sign-up') {
         this.go('/messenger')
         return
       }
-      this.history.pushState({}, '', pathname)
-      this._onRoute(pathname)
-    }
 
-    if (!localStorage.auth) {
-      const pathname = '/'
       this.history.pushState({}, '', pathname)
       this._onRoute(pathname)
-      return
+    } catch (_error) {
+      if (pathname === '/sign-up') {
+        this.history.pushState({}, '', pathname)
+        this._onRoute(pathname)
+        return
+      }
+
+      const pathnameLogin = '/'
+      this.history.pushState({}, '', pathnameLogin)
+      this._onRoute(pathnameLogin)
     }
   }
 
@@ -137,12 +132,6 @@ export default class Router {
   }
 
   go(pathname: string) {
-    if (pathname === '/sign-up' && !localStorage.auth) {
-      this.history.pushState({}, '', pathname)
-      this._onRoute(pathname)
-      return
-    }
-
     this.authRoute(pathname)
   }
 
