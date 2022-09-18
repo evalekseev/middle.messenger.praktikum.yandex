@@ -7,7 +7,7 @@ import SignUpController from '../../services/Controllers/AuthControllers/SignUpC
 
 import Input from '../../components/ui/Input'
 import Button from '../../components/ui/Button'
-import Link from '../../components/UI/Link'
+import Link from '../../components/ui/Link'
 
 import logo from '../../images/logo.svg'
 
