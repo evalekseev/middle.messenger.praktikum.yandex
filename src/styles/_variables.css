@@ -5,13 +5,11 @@
   --bg-color-third: #ff6686;
   --bg-color-fourth: #ffb546;
   --bg-color-fifth: #8e50c0;
-
-  --text-color-main: #ffffff;
+  --bg-color-error: #f42c56;
+  --text-color-main: #fff;
   --text-color-first: #ffe7ca;
   --text-color-second: #aa82cb;
-
   --border-color-main: #8e459a;
-
   --border-radius: 20px;
   --padding: 50px;
   --padding-small: 25px;

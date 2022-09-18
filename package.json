@@ -1,17 +1,18 @@
 {
   "name": "rainbow-parrot-messenger",
-  "version": "0.1.1",
+  "version": "0.2.1",
   "description": "Полноценное SPA 'Веб-мессенджер', реализованное только на JavaScript, TypeScript.",
-  "source": "src/pages/index.hbs",
+  "source": "src/index.html",
   "scripts": {
     "dev": "parcel --no-cache && parcel watch ./*",
     "build": "npm run clean && parcel build --no-cache --no-source-maps",
     "start": "npm run build && npm run static-server",
     "static-server": "node server",
-    "clean": "rimraf dist"
+    "clean": "rimraf dist",
+    "eslint": "eslint \"src/**/*.ts\"",
+    "stylelint": "stylelint \"src/**/*.css\""
   },
   "engines": {
-    "node": ">=16.15.0",
     "npm": ">=8.5.5"
   },
   "repository": {
@@ -25,13 +26,22 @@
   },
   "homepage": "https://github.com/evalekseev/middle.messenger.praktikum.yandex#readme",
   "devDependencies": {
-    "@anikin/parcel-transformer-handlebars": "^1.0.9",
-    "parcel": "^2.5.0",
-    "postcss": "^8.4.14",
-    "postcss-nested": "^5.0.6",
-    "rimraf": "^3.0.2"
+    "@parcel/resolver-glob": "2.7.0",
+    "@types/uuid": "8.3.4",
+    "@typescript-eslint/eslint-plugin": "5.33.0",
+    "@typescript-eslint/parser": "5.33.0",
+    "eslint": "8.21.0",
+    "parcel": "2.7.0",
+    "parcel-transformer-hbs": "1.0.4",
+    "postcss": "8.4.14",
+    "postcss-nested": "5.0.6",
+    "rimraf": "3.0.2",
+    "stylelint": "14.10.0",
+    "stylelint-config-standard": "27.0.0",
+    "typescript": "4.7.4",
+    "uuid": "8.3.2"
   },
   "dependencies": {
-    "express": "^4.18.1"
+    "express": "4.18.1"
   }
 }

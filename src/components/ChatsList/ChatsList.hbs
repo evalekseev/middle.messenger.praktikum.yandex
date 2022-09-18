@@ -1,0 +1,22 @@
+<ul class="chats-list" data-element="ChatsList">
+  {{#each chats}}
+  <li class="chat-item chats-list__item">
+
+    <div class="chat-item__avatar">
+      <img class="chat-item__avatar-img" src="{{../avatar}}" alt="avatar1" />
+      {{#if newMassages}}
+      <span class="chat-item__count-new-message">{{newMassages}}</span>
+      {{/if}}
+    </div>
+    <div class="chat-item__details">
+      <h2 class="chat-item__name">
+        <a href="/chat12332" class="chat-item__link">{{name}}</a>
+      </h2>
+      <span class="chat-item__short-message">{{lastMessage}}</span>
+      <time class="chat-item__time">{{data}}</time>
+    </div>
+
+    <span class="chat-item_hover-effect"></span>
+  </li>
+  {{/each}}
+</ul>

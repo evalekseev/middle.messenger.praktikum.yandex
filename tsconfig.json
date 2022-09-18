@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "outDir": "dist",
+    "noImplicitAny": true,
+    "noUnusedLocals": true,    
+    "noUnusedParameters": true,    
+    "sourceMap": true,    
+    "strictNullChecks": true,
+    "checkJs": true,
+    "allowJs": true,
+    "target": "es2017",
+    "strictPropertyInitialization": false,
+    "module": "es2015",
+    "moduleResolution": "node",
+    "resolveJsonModule": true
+  },
+  "include": ["./src/**/*"],
+  "exclude": ["node_modules", "**/*.spec.ts", "dist/**/*", "server"]
+}
