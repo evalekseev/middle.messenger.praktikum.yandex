@@ -2,27 +2,19 @@ import connect from '../../services/Store/Connect'
 
 import MessengerPage from './MessengerPage'
 
-export default connect(
-  MessengerPage,
-  (state: { pathname: string; chats: [] }) => {
-    const pathname = state.pathname
-    const chats = state.chats
-    let openSettings = false
-    let areChatsEmpty = false
+export default connect(MessengerPage, (state: { pathname: string }) => {
+  const pathname = state.pathname
 
-    if (pathname === '/settings') {
-      openSettings = true
-    }
+  let openSettings = false
 
-    if (!chats?.length) {
-      areChatsEmpty = true
-    }
-
-    const match = pathname.match(/(?<=^\/chat\/)\d+$/)
-    const chatId = match ? Number(match[0]) : null
-
-    return {
-      state: { pathname, chatId, openSettings, areChatsEmpty },
-    }
+  if (pathname === '/settings') {
+    openSettings = true
   }
-)
+
+  const match = pathname.match(/(?<=^\/chat\/)\d+$/)
+  const chatId = match ? Number(match[0]) : null
+
+  return {
+    state: { pathname, chatId, openSettings },
+  }
+})

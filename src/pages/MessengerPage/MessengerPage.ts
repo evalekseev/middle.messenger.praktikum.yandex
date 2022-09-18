@@ -42,16 +42,21 @@ export default class MessengerLayout extends Component {
 
   handleNavToggle(e: Event) {
     e.preventDefault()
-    const navToggle = e.target as HTMLElement
+    const target = e.target as HTMLElement
+    const button = target.closest('.button')
 
-    if (navToggle.classList.contains('open')) {
-      navToggle.classList.remove('open')
+    if (!button) {
+      return
+    }
+
+    if (button.classList.contains('open')) {
+      button.classList.remove('open')
       this.children.User.remove()
       this.sidebarContent.append(this.children.ChatsList.element)
       return
     }
 
-    navToggle.classList.add('open')
+    button.classList.add('open')
     this.children.ChatsList.remove()
     this.sidebarContent.append(this.children.User.element)
   }
