@@ -1,0 +1,24 @@
+{{#if message }}
+<div class="callback-success">
+  {{#if message.error }}
+  <p>{{ message.error }}</p>
+  {{/if}}
+  {{#if message.success }}
+  <p>^-^</p>
+  <span class="callback-success__text_style_bold">Создан чат:</span>
+  <span class="callback-success__password">{{ message.success }}</span>
+  </p>
+  {{/if}}
+</div>
+
+{{else}}
+<form class="create-chat" name="'create_chat">
+  <span class="create-chat__icon icon icon_chat"></span>
+  <div class="create-chat__content">
+    {{{ CreateChatInput }}}
+  </div>
+  <div class="create-chat__content">
+    {{{ CreateChatButton }}}
+  </div>
+</form>
+{{/if}}

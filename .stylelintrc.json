@@ -5,6 +5,8 @@
     "property-no-vendor-prefix": null,
     "font-family-name-quotes": null,
     "import-notation": null,
-    "selector-class-pattern": null
+    "selector-class-pattern": null,
+    "color-function-notation": "legacy", 
+    "alpha-value-notation": "number"  
   }
 }

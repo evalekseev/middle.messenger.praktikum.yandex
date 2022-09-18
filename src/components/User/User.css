@@ -1,0 +1,107 @@
+.user {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  &__logo {
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    bottom: 8px;
+    left: -2px;
+  }
+
+  &__avatar {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+    flex-shrink: 0;
+  }
+
+  &__name {
+    color: var(--text-color-first);
+    font-size: 1.2rem;
+    font-weight: 400;
+  }
+
+  &__email {
+    color: var(--text-color-second);
+    font-size: 0.9rem;
+    font-weight: 300;
+    margin-top: 5px;
+  }
+
+  &__id {
+    color: var(--text-color-second);
+    font-size: 0.9rem;
+    font-weight: 300;
+    margin-top: 5px;
+  }
+
+  &__edit {
+    margin-top: 25px;
+  }
+
+  &__details {
+    display: flex;
+    flex-direction: column;
+    margin-top: 25px;
+    align-items: center;
+  }
+
+  &__bottom {
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: flex-end;
+    align-self: flex-start;
+    align-items: flex-start;
+    display: flex;
+  }
+
+  &__nav {
+    display: flex;
+    align-self: flex-start;
+    margin-top: 60px;
+
+    & ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+  }
+
+  &__nav-item {
+    color: var(--text-color-first);
+    font-size: 0.9rem;
+    font-weight: 400;
+  }
+
+  &__button-settings {
+    margin: 0;
+    margin-top: 30px;
+  }
+
+  &__title-messenger {
+    display: flex;
+    flex-direction: column;
+    margin-top: 150px;
+    position: relative;
+  }
+
+  &__title-messenger-name {
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: var(--text-color-first);
+  }
+
+  &__title-messenger-version {
+    font-size: 0.7rem;
+    font-weight: 300;
+    color: var(--text-color-second);
+  }
+}

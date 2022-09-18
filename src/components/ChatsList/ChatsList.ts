@@ -1,9 +1,16 @@
+import Component from '../../utils/Component'
 import template from './ChatsList.hbs'
 import './ChatsList.css'
-import Component from '../../utils/Component'
-import imgAvatar from '../../images/avatars/avatar4.png'
-export default class Input extends Component {
+
+import avatarEmpty from '../../images/icons/icon__chat-empty.svg'
+
+export default class ChatsList extends Component {
+  constructor({ ...props }) {
+    props.avatarPlaceholder = avatarEmpty
+    super(props)
+  }
+
   render() {
-    return this.compile(template, { avatar: imgAvatar })
+    return this.compile(template)
   }
 }

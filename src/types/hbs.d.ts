@@ -1,4 +1,4 @@
 declare module '*.hbs' {
-  const content: NewableFunction
+  const content: (context: any) => string
   export default content
 }

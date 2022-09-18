@@ -1,0 +1,15 @@
+<div class="chat-settings">
+  <div class="chat-settings__avatar">
+    {{#if chat.avatar}}
+    <img src="{{ chat.avatar }}" alt="chat-avatar" />
+    {{else}}
+    <img src="{{ avatarPlaceholder }}" alt="chat-avatar" />
+    {{/if}}
+    {{{ ButtonChangeAvatar }}}
+  </div>
+  <div class="chat-settings__details">
+    <span class="chat-settings__name">{{ chat.title }}</span>
+    <span class="chat-settings__id">ID: {{ chat.id }}</span>
+  </div>
+  {{{ ChatSettingsUsersList }}}
+</div>

@@ -1,0 +1,29 @@
+.chat-sidebar {
+  min-width: 350px;
+  max-width: fit-content;
+  padding: var(--padding-small);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  flex-shrink: 0;
+
+  &_style_profile {
+    width: min-content;
+  }
+
+  &__top {
+    height: 40px;
+    display: flex;
+    justify-content: space-between;
+    flex-shrink: 0;
+    align-items: center;
+    margin-bottom: 25px;
+  }
+
+  &_style_flex {
+    width: 600px;
+    transition-property: width;
+    transition-duration: 0.5s;
+  }
+}

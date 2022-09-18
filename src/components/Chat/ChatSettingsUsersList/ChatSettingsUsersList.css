@@ -1,0 +1,46 @@
+.chat-settings-user-list {
+  width: 350px;
+  height: 40px;
+  display: flex;
+  border: 1px solid var(--bg-color-fifth);
+  border-radius: 20px;
+  padding: 0 15px;
+  position: relative;
+  align-items: center;
+  justify-content: flex-start;
+
+  &__user-name {
+    color: var(--text-color-first);
+    font-size: 0.9rem;
+    font-weight: 400;
+    margin-right: 15px;
+  }
+
+  &__user-role {
+    color: var(--text-color-second);
+    font-size: 0.9rem;
+    font-weight: 300;
+    margin-right: 15px;
+    position: absolute;
+    left: 150px;
+  }
+
+  &__user-id {
+    color: var(--text-color-second);
+    font-size: 0.9rem;
+    font-weight: 300;
+  }
+
+  &__user-delete {
+    position: absolute;
+    right: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+  }
+
+  &_style_admin {
+    color: var(--text-color-second);
+  }
+}

@@ -1,0 +1,35 @@
+.chat-users {
+  display: flex;
+  flex-grow: 1;
+  justify-content: flex-end;
+  align-items: center;
+
+  &__items {
+    display: flex;
+    list-style: none;
+    margin-right: 5px;
+  }
+
+  &__user-item {
+    width: fit-content;
+    height: 30px;
+    color: var(--text-color-first);
+    font-size: 0.9rem;
+    font-weight: 400;
+    margin: 0 5px;
+    border-radius: 20px;
+    padding: 0 10px;
+    display: flex;
+    align-items: center;
+    padding-left: 5px;
+  }
+
+  &__user-avatar {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    overflow: hidden;
+    margin-right: 10px;
+  }
+}
