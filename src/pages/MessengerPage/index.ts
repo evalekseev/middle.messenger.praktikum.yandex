@@ -14,7 +14,7 @@ export default connect(
       openSettings = true
     }
 
-    if (!chats.length) {
+    if (!chats?.length) {
       areChatsEmpty = true
     }
 

@@ -98,14 +98,7 @@ export default class Component {
     }
   }
 
-  protected componentDidUpdate(oldProps: TProps, newProps: TProps) {
-    return this.shouldComponentUpdate(oldProps, newProps)
-  }
-
-  protected shouldComponentUpdate(oldProps: TProps, newProps: TProps) {
-    if (JSON.stringify(oldProps) === JSON.stringify(newProps)) {
-      return false
-    }
+  protected componentDidUpdate(_oldProps: TProps, _newProps: TProps) {
     return true
   }
 

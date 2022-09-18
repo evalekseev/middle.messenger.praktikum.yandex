@@ -6,6 +6,7 @@ import Modal from '../../utils/Modal'
 import Router from '../../services/Router'
 
 import ChatController from '../../services/Controllers/ChatControllers/ChatController'
+import ChatsController from '../../services/Controllers/ChatsControllers/ChatsController'
 
 import Chat from '../../components/Chat'
 import ChatsList from '../../components/ChatsList'
@@ -63,7 +64,7 @@ export default class MessengerLayout extends Component {
         settings.element,
         'modal-settings',
         () => {
-          new Router().back()
+          new Router().go('/messenger')
         }
       )
       this.modalWithSettings.show()
@@ -105,6 +106,7 @@ export default class MessengerLayout extends Component {
   }
 
   override componentDidMount(): void {
+    ChatsController.Get()
     this.sidebarContent = this.element.querySelector(
       '[data-element="sidebar-content"]'
     ) as HTMLElement

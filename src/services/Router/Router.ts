@@ -1,7 +1,6 @@
 import Route from './Route'
 
 import UserController from '../Controllers/UserControllers/UserController'
-import ChatsController from '../Controllers/ChatsControllers/ChatsController'
 import PathnameController from '../Controllers/PathnameController'
 
 type Props = {
@@ -44,7 +43,6 @@ export default class Router {
   async authRoute(pathname = window.location.pathname) {
     try {
       await UserController.Get()
-      await ChatsController.Get()
 
       if (pathname === '/' || pathname === '/sign-up') {
         this.go('/messenger')
