@@ -144,8 +144,14 @@ export default class Component {
     return wrap.content
   }
 
-  compile(template: (context: any) => string): DocumentFragment {
-    const copyProps = { ...this.props }
+  compile(template: (context: any) => string, props?: any): DocumentFragment {
+    let copyProps: any
+
+    if (props) {
+      copyProps = { ...props }
+    } else {
+      copyProps = { ...this.props }
+    }
 
     const wrap = this._createDocumentElement('template') as HTMLTemplateElement
 

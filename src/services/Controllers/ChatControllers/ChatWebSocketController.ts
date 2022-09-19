@@ -56,7 +56,7 @@ type IResponseFromWS =
 
 const ChatWebSocketController = {
   Create({ userId, chatId, chatToken }: TWebSocketUrlConnect) {
-    const urlForWebSocket = `wss://ya-praktikum.tech/ws/chats/${userId}/${chatId}/${chatToken}`
+    const urlForWebSocket = `${process.env.WEB_SOCKET}/${userId}/${chatId}/${chatToken}`
 
     const WebSocketInstance = new WebSocketConnect(urlForWebSocket)
 

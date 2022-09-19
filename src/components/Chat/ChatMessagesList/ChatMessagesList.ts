@@ -2,6 +2,8 @@ import Component from '../../../utils/Component'
 import template from './ChatMessagesList.hbs'
 import './ChatMessagesList.css'
 
+import ChatsController from '../../../services/Controllers/ChatsControllers/ChatsController'
+
 import ChatMessage from '../ChatMessage'
 
 type TOldMessagesForList = {
@@ -55,13 +57,21 @@ export default class ChatMessagesList extends Component {
     }
   }
 
-  override componentDidUpdate(_oldProps: any, newProps: any) {
-    const { NewMessage } = newProps.state
-    if (NewMessage) {
-      this.appendMessage(NewMessage)
-      return false
+  override componentDidUpdate(_oldProps: any, _newProps: any) {
+    const { NewMessage: oldMessage } = _oldProps.state
+    const { NewMessage: message } = _newProps.state
+
+    if (!message) {
+      return true
     }
-    return true
+
+    if (oldMessage && oldMessage.id === message.id) {
+      return true
+    }
+
+    this.appendMessage(message)
+    ChatsController.Get()
+    return false
   }
 
   override elementDidMount() {

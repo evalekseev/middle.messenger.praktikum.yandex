@@ -110,8 +110,8 @@ export default class MessengerLayout extends Component {
     })
   }
 
-  override componentDidMount(): void {
-    ChatsController.Get()
+  override async componentDidMount() {
+    await ChatsController.Get()
     this.sidebarContent = this.element.querySelector(
       '[data-element="sidebar-content"]'
     ) as HTMLElement

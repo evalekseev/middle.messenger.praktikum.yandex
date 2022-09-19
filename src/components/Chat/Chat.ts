@@ -5,7 +5,6 @@ import './Chat.css'
 import Modal from '../../utils/Modal'
 
 import ChatMessageController from '../../services/Controllers/ChatControllers/ChatMessageController'
-import ChatsController from '../../services/Controllers/ChatsControllers/ChatsController'
 
 import ChatMessagesList from './ChatMessagesList'
 import ChatCreate from './ChatCreate'
@@ -62,7 +61,6 @@ export default class Chat extends Component {
     const message = inputSendMessage.value
     ChatMessageController.Send(message)
     inputSendMessage.value = ''
-    ChatsController.Get()
   }
 
   override componentDidUpdate() {

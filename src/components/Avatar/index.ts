@@ -4,12 +4,14 @@ import Avatar from './Avatar'
 
 export default connect(Avatar, state => {
   const user = state.user as { avatar: string }
-  if (user) {
+
+  if (!user) {
     return {
-      user: { avatar: user.avatar },
+      avatar: null,
     }
   }
+
   return {
-    user: { avatar: null },
+    avatar: user.avatar,
   }
 })
