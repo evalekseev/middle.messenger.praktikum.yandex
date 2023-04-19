@@ -20,6 +20,7 @@
     flex-direction: column;
     flex-grow: 1;
     justify-content: flex-end;
+    margin-top: 30px;
   }
 
   &__content-row {

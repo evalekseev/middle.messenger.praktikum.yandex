@@ -1,6 +1,6 @@
 # RainbowParrot messenger
 
-> Version App 0.2.1
+> Version App 0.3.1
 
 Проект - полноценное **SPA "Веб-мессенджер"** , реализованное только на JavaScript, TypeScript.
 
@@ -26,3 +26,7 @@
 ### To start project on local server:
 
 - **`npm run start`** - "собирает" проект и "запускает" локальный сервер на 3000 порту.
+
+### To start tests:
+
+- **`npm run test`** - "запускает" тесты.

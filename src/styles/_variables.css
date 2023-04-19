@@ -13,4 +13,5 @@
   --border-radius: 20px;
   --padding: 50px;
   --padding-small: 25px;
+  --icon-change-avatar: url('/src/images/icons/icon__change-avatar.svg');
 }

@@ -1,0 +1,56 @@
+.chat-header {
+  width: 100%;
+  background: var(--bg-color-first);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding: 0 20px;
+  cursor: pointer;
+
+  &__link {
+    display: flex;
+    align-items: center;
+    width: 100%;
+  }
+
+  &__details {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__name {
+    color: var(--text-color-first);
+    font-size: 0.9rem;
+    font-weight: 400;
+  }
+
+  &__status {
+    color: var(--text-color-second);
+    font-size: 0.8rem;
+    font-weight: 200;
+  }
+
+  &__avatar {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 15px;
+  }
+}
+
+.chat-send {
+  width: 100%;
+  background: var(--bg-color-first);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  position: relative;
+
+  &__input {
+    padding: 0 var(--padding-small);
+    border: 0;
+  }
+}

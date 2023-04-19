@@ -1,0 +1,8 @@
+<div class="found-users">
+  {{#each foundUsers}}
+  <div class="found-users__user" data-found-user-id="{{ id }}" data-found-user-login="{{ login }}">
+    <span class="found-users__user-name">{{ login }}</span>
+    <span class="found-users__user-id">ID: {{ id }}</span>
+  </div>
+  {{/each}}
+</div>

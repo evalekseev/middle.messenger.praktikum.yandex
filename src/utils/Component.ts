@@ -2,7 +2,7 @@ import { v4 as makeUUID } from 'uuid'
 import EventBus from './EventBus'
 
 type TProps = Record<string, any>
-type TChildren = Record<string, Component>
+type TChildren = Record<string, any>
 
 export default class Component {
   static EVENTS = {
@@ -13,7 +13,7 @@ export default class Component {
   }
 
   _element: any
-  _children: TChildren | null
+  children: TChildren
   _id: string
   _meta: {
     props: TProps
@@ -21,111 +21,122 @@ export default class Component {
   eventBus: EventBus
   props: TProps
 
-  constructor(props: TProps = {}) {
+  constructor(propsAndChilds: any = {}) {
     this._id = makeUUID()
+
+    this.eventBus = new EventBus()
+
+    const { children, props } = this._getChildren(propsAndChilds)
+
+    this.children = this._makePropsProxy(children)
+
+    this.initChildrenComponents()
+
     this.props = this._makePropsProxy({ ...props, _id: this._id })
-    this._getChildren()
 
     this._meta = {
       props,
     }
 
-    this.eventBus = new EventBus()
     this._registerEvents(this.eventBus)
 
     this.eventBus.emit(Component.EVENTS.INIT)
   }
 
-  protected _registerEvents(eventBus: any) {
+  private _getChildren(propsAndChilds: any) {
+    const children: TChildren = {}
+    const props: TProps = {}
+
+    Object.entries(propsAndChilds).forEach(([key, value]) => {
+      if (value instanceof Component) {
+        children[key] = value
+      } else {
+        props[key] = value
+      }
+    })
+
+    return { children, props }
+  }
+
+  private _registerEvents(eventBus: any) {
     eventBus.on(Component.EVENTS.INIT, this.init.bind(this))
     eventBus.on(Component.EVENTS.FLOW_CDM, this._componentDidMount.bind(this))
     eventBus.on(Component.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this))
     eventBus.on(Component.EVENTS.FLOW_RENDER, this._render.bind(this))
   }
 
-  protected _getChildren(): void {
-    const children: TChildren = {}
-
-    Object.entries(this.props).forEach(([key, value]) => {
-      if (value instanceof Component) {
-        children[key] = value
-      }
-    })
-
-    this._children = children
-  }
-
   init(): void {
     this.eventBus.emit(Component.EVENTS.FLOW_RENDER)
   }
 
-  protected _createResources(): void {
-    this._element = this._createDocumentElement('section')
-  }
+  initChildrenComponents(): void {}
 
-  protected _createDocumentElement(tagName: string): HTMLElement | HTMLTemplateElement {
+  private _createDocumentElement(
+    tagName: string
+  ): HTMLElement | HTMLTemplateElement {
     const elementNode = document.createElement(tagName)
     return elementNode
   }
 
-  protected _componentDidMount() {
+  private _componentDidMount() {
     this.componentDidMount()
+    Object.values(this.children).forEach(child => {
+      child.dispatchComponentDidMount()
+    })
   }
 
-  componentDidMount() {
-    this.dispatchComponentDidMoun()
+  protected componentDidMount() {}
+
+  dispatchComponentDidMount(): void {
+    this.eventBus.emit(Component.EVENTS.FLOW_CDM)
   }
 
-  dispatchComponentDidMoun(dispatchDetails = {}): void {}
-
-  protected _componentDidUpdate(oldProps: TProps, newProps: TProps) {
-    console.log('--_componentDidUpdate', oldProps, newProps)
-    const response = this.shouldComponentUpdate(oldProps, newProps)
-    if (response) {
+  private _componentDidUpdate(oldProps: TProps, newProps: TProps) {
+    const update = this.componentDidUpdate(oldProps, newProps)
+    if (update) {
       this.eventBus.emit(Component.EVENTS.FLOW_RENDER)
     }
-    this.componentDidUpdate()
   }
 
-  componentDidUpdate() {}
-
-  shouldComponentUpdate(oldProps: TProps, newProps: TProps) {
-    if (JSON.stringify(oldProps) === JSON.stringify(newProps)) {
-      return false
-    }
+  protected componentDidUpdate(_oldProps: TProps, _newProps: TProps) {
     return true
   }
 
-  setProps = (nextProps: TProps) => {
+  setProps(nextProps: TProps) {
+    const { children, props } = this._getChildren(nextProps)
+
     if (!nextProps) {
       return
     }
 
-    const oldProps = { ...this.props }
-    this.props = Object.assign(this.props, nextProps)
-    this.eventBus.emit(Component.EVENTS.FLOW_CDU, oldProps, this.props)
+    if (Object.values(children).length) {
+      Object.assign(this.children, children)
+    }
+
+    if (Object.values(props).length) {
+      Object.assign(this.props, props)
+    }
   }
 
   get element() {
     return this._element
   }
 
-  protected _render(): void {
-    const wrap = this.render()
+  elementDidMount() {}
+  private _render(): void {
+    const fragment = this.render()
 
-    const elementNode = wrap.firstElementChild as HTMLElement
+    const elementNode = fragment.firstElementChild as HTMLElement
 
-    if (elementNode) {
-      elementNode.dataset.id = this.props._id as string
+    elementNode.dataset.id = this.props._id as string
 
-      if (this._element) {
-        this._element.replaceWith(elementNode)
-      } else {
-        this._element = elementNode
-      }
-      this._initEventListeners()
+    if (this._element) {
+      this._removeEventListeners()
+      this._element.replaceWith(elementNode)
     }
-    this.eventBus.emit(Component.EVENTS.FLOW_CDM)
+    this._element = elementNode
+    this._addEventListeners()
+    this.elementDidMount()
   }
 
   render(): DocumentFragment {
@@ -133,52 +144,70 @@ export default class Component {
     return wrap.content
   }
 
-  protected _updateProps(newProps: TProps) {
-    this.props = Object.assign(this.props, newProps)
-    this._getChildren()
-  }
+  compile(template: (context: any) => string, props?: any): DocumentFragment {
+    let copyProps: any
 
-  compile(template: NewableFunction, props: TProps): DocumentFragment {
-    this._updateProps(props)
+    if (props) {
+      copyProps = { ...props }
+    } else {
+      copyProps = { ...this.props }
+    }
 
     const wrap = this._createDocumentElement('template') as HTMLTemplateElement
 
-    if (this._children) {
-      Object.entries(this._children).forEach(([key, child]) => {
-        this.props[key] = `<div data-id="${child._id}"></div>`
+    if (this.children) {
+      Object.entries(this.children).forEach(([key, child]) => {
+        copyProps[key] = `<div data-id="${child._id}"></div>`
       })
+      wrap.innerHTML = template(copyProps)
 
-      wrap.innerHTML = template(this.props)
-
-      Object.entries(this._children).forEach(([key, child]) => {
+      Object.entries(this.children).forEach(([key, child]) => {
         const replacementElement = wrap.content.querySelector(
           `[data-id="${child._id}"]`
         ) as HTMLElement
-        replacementElement.replaceWith(child.element as HTMLElement)
-        this.props[key] = child
+        if (replacementElement) {
+          replacementElement.replaceWith(child.element as HTMLElement)
+          copyProps[key] = child
+        }
       })
 
       return wrap.content
     }
 
-    wrap.innerHTML = template(this.props)
+    wrap.innerHTML = template(copyProps)
 
     return wrap.content
   }
 
-  protected _makePropsProxy(props: TProps) {
-    const proxyProps = new Proxy(props, {
+  private _makePropsProxy(props: TProps) {
+    return new Proxy(props, {
+      get(target: Record<string, unknown>, prop: string) {
+        const value = target[prop]
+        return typeof value === 'function' ? value.bind(target) : value
+      },
+
+      set: (target: Record<string, unknown>, prop: string, value: unknown) => {
+        const oldValue = { ...target }
+
+        target[prop] = value
+
+        this.eventBus.emit(Component.EVENTS.FLOW_CDU, oldValue, target)
+
+        return true
+      },
+
       deleteProperty() {
         throw new Error('Нет прав')
       },
     })
-
-    return proxyProps
   }
 
-  protected _initEventListeners() {
-    this.props.events = this.initEventListeners()
-    const { events = {} } = this.props
+  private _addEventListeners() {
+    const { events }: any = this.props
+
+    if (!events) {
+      return
+    }
 
     Object.keys(events).forEach(eventName => {
       const { handle, capture = false } = events[eventName]
@@ -186,12 +215,15 @@ export default class Component {
     })
   }
 
-  initEventListeners() {
-    return this.props.events
-  }
+  private _removeEventListeners() {
+    const events: Record<
+      string,
+      { handle: (e: Event) => void; capture: boolean }
+    > = this.props.events
 
-  protected _removeEventListeners() {
-    const { events = {} } = this.props
+    if (!events) {
+      return
+    }
 
     Object.keys(events).forEach(eventName => {
       const { handle, capture = false } = events[eventName]

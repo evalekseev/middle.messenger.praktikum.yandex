@@ -1,0 +1,51 @@
+.form-settings {
+  display: grid;
+  grid-gap: 2em;
+  border: 0;
+  margin-top: 30px;
+  padding: 30px;
+  padding-bottom: 0;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+    'display_name name'
+    'login second_name'
+    'email phone'
+    'password .'
+    'submit submit';
+
+  & .login {
+    grid-area: login;
+  }
+
+  & .email {
+    grid-area: email;
+  }
+
+  & .name {
+    grid-area: name;
+  }
+
+  & .second_name {
+    grid-area: second_name;
+  }
+
+  & .phone {
+    grid-area: phone;
+  }
+
+  & .display_name {
+    grid-area: display_name;
+  }
+
+  & .button__submit {
+    justify-self: center;
+    grid-area: submit;
+    margin-top: 30px;
+  }
+
+  & .button__password {
+    grid-area: password;
+    width: 100%;
+    margin: 0;
+  }
+}

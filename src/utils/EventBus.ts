@@ -17,12 +17,17 @@ export default class EventBus {
       throw new Error(`Нет события: ${event}`)
     }
 
-    this.listeners[event] = this.listeners[event].filter((listener: any) => listener !== callback)
+    this.listeners[event] = this.listeners[event].filter(
+      (listener: any) => listener !== callback
+    )
   }
 
-  emit(event: string | number, ...args: ({ [x: string]: unknown } | undefined)[]) {
+  emit(
+    event: string | number,
+    ...args: ({ [x: string]: unknown } | undefined)[]
+  ) {
     if (!this.listeners[event]) {
-      throw new Error(`Нет события: ${event}`)
+      return
     }
 
     this.listeners[event].forEach((listener: any) => {

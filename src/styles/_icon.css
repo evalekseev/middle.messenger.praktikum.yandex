@@ -1,0 +1,49 @@
+.icon {
+  display: flex;
+  width: 40px;
+  height: 40px;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  &_user {
+    background-image: url('../images/icons/icon__account.svg');
+  }
+
+  &_chat {
+    background-image: url('../images/icons/icon__create-chat.svg');
+  }
+
+  &_settings {
+    background-image: url('../images/icons/icon__settings.svg');
+  }
+
+  &_password {
+    background-image: url('../images/icons/icon__password.svg');
+  }
+
+  &_attach {
+    background-image: url('../images/icons/icon__attach.svg');
+  }
+
+  &_plus {
+    background-image: url('../images/icons/icon__plus.svg');
+  }
+
+  &_logout {
+    background-image: url('../images/icons/icon__logout.svg');
+  }
+
+  &_nav {
+    background-image: url('../images/icons/icon__nav-toggle.svg');
+  }
+
+  &_change-avatar {
+    background-image: url('../images/icons/icon__change-avatar.svg');
+    transition: transform 0.5s, opacity 0.2s;
+    opacity: 0;
+  }
+
+  &_delete-user {
+    background-image: url('../images/icons/icon__delete-user.svg');
+  }
+}

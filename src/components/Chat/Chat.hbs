@@ -1,30 +1,30 @@
-<div class="chat-content">
-  <div class="chat-content__header">
-    <div class="chat-header">
-      <div class="chat-header__avatar">
-        <img class="chat-header__avatar-img" src="{{ avatar }}" alt="avatar1" />
-      </div>
-      <div class="chat-header__details">
-        <span class="chat-header__name">Parrotellow</span>
-        <span class="chat-header__status">Online</span>
-      </div>
-    </div>
-    <div class="chat-header-nav">
-      <button class="button chat-content__button">
-        <img src="{{ iconMore }}" alt="account-menu-button" class="" />
-      </button>
-    </div>
-  </div>
-  {{{ ChatMessages }}}
-  <div class="chat-content__bottom">
-    <div class="chat-send">
-      <input type="text" name="message" placeholder="Введите сообщение ..." class="input chat-send__input" />
-    </div>
-    <div class="chat-send-attach">
-      <button class="button chat-content__button">
-        <img src="{{ iconAttach }}" alt="account-menu-button" class="" />
-      </button>
-    </div>
-
+{{#if state.areChatsEmpty}}
+<div class="chat-content chat-content_style_block_center">
+  <div class="chat-content__message-empty-chats">
+    Привет! у тебя нет, ни одного чата ^-^
   </div>
 </div>
+
+{{else}}
+{{#if state.chatOpen }}
+<div class="chat-content component-animate2">
+  <div class="chat-content__header">
+    {{{ ChatHeader }}}
+  </div>
+  <div class="chat-content__messages">
+    {{{ ChatMessagesList }}}
+  </div>
+  <div class="chat-content__bottom">
+    <div class="chat-send">
+      {{{ InputSendMessage }}}
+    </div>
+  </div>
+</div>
+{{else}}
+<div class="chat-content chat-content_style_block_center">
+  <div class="chat-content__message-empty-chats">
+    Выберите чат ^-^
+  </div>
+</div>
+{{/if}}
+{{/if}}

@@ -1,0 +1,23 @@
+<div class="chat-users">
+  <ul class="chat-users__items">
+    {{#each chatUsers}}
+    <li class="chat-users__user-item">
+      <span class="chat-users__user-avatar">
+        {{#if avatar}}
+        <img src="{{ avatar }}" alt="user-avatar">
+        {{else}}
+        <img src="{{ ../avatarPlaceholder }}" alt="user-avatar">
+        {{/if}}
+      </span>
+      <span class="chat-users__user-name">
+        {{#if display_name}}
+        {{ display_name }}
+        {{else}}
+        {{ login }}
+        {{/if}}
+      </span>
+    </li>
+    {{/each}}
+  </ul>
+  {{{ ButtonAddUserToChat }}}
+</div>

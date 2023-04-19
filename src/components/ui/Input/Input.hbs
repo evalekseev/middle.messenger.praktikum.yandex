@@ -1,0 +1,11 @@
+{{#if onlyInput}}
+<input type="{{type}}" name="{{name}}" id="{{name}}" class="input {{class}}" placeholder="{{placeholder}}"
+  autocomplete="off">
+{{else}}
+<div class="input-wrap {{name}}">
+  <label for="{{name}}" class="label">{{label}}</label>
+  <input type="{{type}}" name="{{name}}" id="{{name}}" class="input {{class}}" placeholder="{{placeholder}}"
+    autocomplete="off">
+  <span class="line"></span>
+</div>
+{{/if}}

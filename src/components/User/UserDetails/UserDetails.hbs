@@ -1,0 +1,8 @@
+<div class="user-details settings__details">
+  {{#if user.display_name}}
+  <span class="user-details__name">{{ user.display_name }}</span>
+  {{else}}
+  <span class="user-details__name">{{ user.login }}</span>
+  {{/if}}
+  <span class="user-details__email">ID: {{ user.id }}</span>
+</div>

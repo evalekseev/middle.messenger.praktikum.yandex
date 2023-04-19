@@ -1,21 +1,23 @@
-<ul class="chats-list" data-element="ChatsList">
+<ul class="chats-list">
   {{#each chats}}
   <li class="chat-item chats-list__item">
-
     <div class="chat-item__avatar">
-      <img class="chat-item__avatar-img" src="{{../avatar}}" alt="avatar1" />
-      {{#if newMassages}}
-      <span class="chat-item__count-new-message">{{newMassages}}</span>
+      {{#if avatar}}
+      <img class="chat-item__avatar-img" src="{{ avatar }}" alt="chat-avatar" />
+      {{else}}
+      <img class="chat-item__avatar-img" src="{{ ../avatarPlaceholder }}" alt="chat-avatar" />
+      {{/if}}
+      {{#if unread_count}}
+      <span class="chat-item__count-new-message">{{unread_count}}</span>
       {{/if}}
     </div>
     <div class="chat-item__details">
       <h2 class="chat-item__name">
-        <a href="/chat12332" class="chat-item__link">{{name}}</a>
+        <a href="/chat/{{id}}" class="chat-item__link">{{title}}</a>
       </h2>
-      <span class="chat-item__short-message">{{lastMessage}}</span>
-      <time class="chat-item__time">{{data}}</time>
+      <span class="chat-item__short-message">{{last_message.content}}</span>
+      <time class="chat-item__time" datetime="{{last_message.time}}">{{last_message.time}}</time>
     </div>
-
     <span class="chat-item_hover-effect"></span>
   </li>
   {{/each}}

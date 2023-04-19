@@ -1,0 +1,17 @@
+<div class="chat-settings__users">
+  {{#each chatUsers}}
+  <div class="chat-settings-user-list {{#if role}}chat-settings-user-list_style_admin{{/if}}">
+    <span class="chat-settings-user-list__user-name">
+      {{#if display_name}}
+      {{ display_name }}
+      {{else}}
+      {{ login }}
+      {{/if}}</span>
+    <span class="chat-settings-user-list__user-id">ID: {{ id }}</span>
+    {{#unless role}}
+    <button class="button button_style_plus chat-settings-user-list__user-delete" data-chat-id="{{ ../chat.id }}"
+      data-chat-user-id="{{ id }}"><span class="icon icon_delete-user"></span></button>
+    {{/unless}}
+  </div>
+  {{/each}}
+</div>

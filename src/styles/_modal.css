@@ -1,0 +1,67 @@
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 101;
+
+  &__element {
+    width: auto;
+    height: auto;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background: var(--bg-color-first);
+    border-radius: var(--border-radius);
+    border: 3px solid var(--bg-color-fifth);
+    padding: var(--padding-small);
+    box-sizing: border-box;
+
+    &__title {
+      color: var(--text-color-first);
+      font-size: 1.2rem;
+      font-weight: 400;
+      margin-bottom: 30px;
+    }
+
+    & .input-wrap {
+      margin-bottom: 0;
+    }
+  }
+
+  &.show {
+    animation-duration: 0.5s;
+    animation-name: slidedown;
+  }
+
+  &__hide {
+    width: 36px;
+    height: 36px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(50%, -50%);
+    border-radius: 50%;
+    border: 3px solid var(--bg-color-fifth);
+    background: var(--bg-color-first);
+    background-image: url('../images/icons/icon__close-modal.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    z-index: 102;
+  }
+
+  & .overlay {
+    border-radius: var(--border-radius);
+  }
+}
+
+@keyframes slidedown {
+  from {
+    transform: translate(-50%, calc(-50% - 30px));
+  }
+
+  to {
+    transform: translate(-50%, -50%);
+  }
+}

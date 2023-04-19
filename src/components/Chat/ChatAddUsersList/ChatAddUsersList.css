@@ -1,0 +1,39 @@
+.found-users {
+  width: 100%;
+  display: grid;
+  grid-gap: 0.5em;
+  position: absolute;
+  top: 50px;
+
+  &__user {
+    width: auto;
+    height: 40px;
+    display: flex;
+    border: 1px solid var(--bg-color-fifth);
+    border-radius: 20px;
+    padding: 0 15px;
+    position: relative;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--bg-color-first);
+    cursor: pointer;
+    transition: background-color 0.5s;
+
+    &:hover {
+      background-color: var(--bg-color-second);
+    }
+  }
+
+  &__user-name {
+    color: var(--text-color-first);
+    font-size: 0.9rem;
+    font-weight: 400;
+    margin-right: 15px;
+  }
+
+  &__user-id {
+    color: var(--text-color-second);
+    font-size: 0.9rem;
+    font-weight: 300;
+  }
+}
